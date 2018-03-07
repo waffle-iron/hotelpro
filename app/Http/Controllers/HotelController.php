@@ -20,7 +20,7 @@ class HotelController extends Controller
     {
         $hotels = Hotel::all();
         if($request->ajax()){
-            return response(compact('hotels'))->json(,200) ;
+            return response(compact('hotels'))->json($hotels,200) ;
         }else{
             return back()->withInput();
         }
