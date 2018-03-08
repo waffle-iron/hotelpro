@@ -2,7 +2,14 @@
 
 namespace App\Http\Controllers\Api;
 
+
+use App\User;
+use App\Hotel;
+use App\Http\Logic\HotelLogic;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\StoreHotelRequest;
 use App\Http\Controllers\Controller as WebController;
 
 class ApiHotelController extends WebController
@@ -12,9 +19,15 @@ class ApiHotelController extends WebController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $hotels = Hotel::all();
+        
+        if($request->ajax()){
+            return response()->json(compact('hotels'),200) ;
+        }else{
+            return abort(404, 'Nooon');
+        }
     }
 
     /**

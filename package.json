@@ -17,5 +17,10 @@
         "laravel-mix": "^1.0",
         "lodash": "^4.17.4",
         "vue": "^2.5.7"
+    },
+    "dependencies": {
+        "qs": "^6.5.1",
+        "tooltipster": "^4.2.6",
+        "vue-tooltipster": "^1.2.0"
     }
 }

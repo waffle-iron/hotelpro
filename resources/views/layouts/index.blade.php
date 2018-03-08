@@ -16,6 +16,7 @@
     
 
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/assets/css/core.css" rel="stylesheet" />
     <link href="/assets/css/bootstrap-extend.css" rel="stylesheet" />
     <link href="/assets/css/spinkit.css" rel="stylesheet" />
     <link href="/plugins/toastr/toastr.min.css" rel="stylesheet" />
@@ -37,14 +38,13 @@
   
 </head>
 
-<body >
-    <div class="slimscroll">
-
+<body>
+    
         @yield('header')
 
         @yield('content')
 
-    </div>
+    
 </body>
     
     <!--   Core JS Files   -->

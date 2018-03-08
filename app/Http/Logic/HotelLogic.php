@@ -12,7 +12,47 @@ class HotelLogic
 {
     /**
      * Display a listing of the resource.
-     *
+     * @author nkaurelien
+     * @return \Illuminate\Http\Response
+     */
+    public static function getPaginate(Request $request)
+    {
+        $q = $request->input('q');
+        $prix_min = $request->input('prixMin');
+        $prix_max = $request->input('prixMax');
+        $nbre_etoile = $request->input('nbreEtoile');
+        $place = $request->input('place');
+
+        /* debut du filtrage */
+        $query = Hotel::query();
+
+        if ($q) {
+            $query = $query->where(function ($query) {
+                        $query->where('nom', 'like', "%$q%")->orWhere('tel', 'like', "%$q%")->orWhere('email', 'like', "%$q%")
+                    });
+        }
+
+        if ($prix_max) {
+            $query = $query->where("prix_max", '<=', $prix_max);
+        }
+        if ($prix_min) {
+            $query = $query->where("prix_min", '>=', $prix_min);
+        }
+
+        if ($place) {
+             $query = $query->where(function ($query) {
+                        $query->where('place', 'like', "%$place%")->orWhere('ville', 'like', "%$place%")->orWhere('pays', 'like', "%$place%")
+                    });
+        }
+
+        /* resultat de la recherche et pagination */
+
+        return Hotel::paginate();
+    }
+
+    /**
+     * Display a listing of the resource per page.
+     * @author nkaurelien
      * @return \Illuminate\Http\Response
      */
     public static function getAll()
@@ -22,7 +62,7 @@ class HotelLogic
 
     /**
      * Store a newly created resource in storage.
-     *
+     *  
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */

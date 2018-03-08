@@ -6,6 +6,7 @@ use App\User;
 use App\Hotel;
 use App\Http\Logic\HotelLogic;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\StoreHotelRequest;
 
@@ -16,14 +17,10 @@ class HotelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $hotels = Hotel::all();
-        if($request->ajax()){
-            return response(compact('hotels'))->json(,200) ;
-        }else{
-            return back()->withInput();
-        }
+        $hotels = HotelLogic::getPaginate($request);
+        return $hotels;
     }
 
     /**

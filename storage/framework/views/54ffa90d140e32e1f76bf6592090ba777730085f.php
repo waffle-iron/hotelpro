@@ -7,7 +7,7 @@
         <nav class="navbar navbar-ct-blue navbar-transparent navbar-fixed-top" role="navigation">
           <div class="alert alert-success hidden">
             <div class="container">
-                <b>Lorem ipsum</b> dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                <b>Info</b> Nothins to talk. How is HotelProOnline ?
             </div>
           </div>
           
@@ -29,7 +29,7 @@
                  <li class="dropdown">
                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                          <span class="flag-icon flag-icon-<?php echo e(Config::get('app.locale')); ?>"></span>
-                         <b class="caret"></b>
+                         <b class="caret hide"></b>
                        </a>
                        <ul class="dropdown-menu">
                          <li><a href="?fr">
