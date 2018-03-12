@@ -32,16 +32,15 @@
                          <b class="caret hide"></b>
                        </a>
                        <ul class="dropdown-menu">
-                         <li><a href="?fr">
+                         <li><a href="?lang=fr">
                          <span class="flag-icon flag-icon-fr"></span><?php echo app('translator')->getFromJson('string.French'); ?></a></li>
+                         <li><a href="?lang=en"><span class="flag-icon flag-icon-gb"></span> <?php echo app('translator')->getFromJson('string.English'); ?></a></li>
                          <li><a href="#"><span class="flag-icon flag-icon-de"></span>Deutsch</a></li>
-                         <li><a href="#"><span class="flag-icon flag-icon-gb"></span> English(UK)</a></li>
                          <li><a href="#"><span class="flag-icon flag-icon-ro"></span>Română</a></li>
                          <li><a href="#"><span class="flag-icon flag-icon-it"></span>Italiano</a></li>
 
                          <!-- <li class="divider"></li> -->
                          
-
                        </ul>
                  </li>
 
@@ -67,7 +66,7 @@
               <ul class="nav navbar-nav navbar-right">
 
                 <?php if(auth()->guard()->guest()): ?>
-                            <li><a href="<?php echo e(route('login')); ?>">Login</a></li>
+                            <li><a href="<?php echo e(route('login')); ?>"><?php echo app('translator')->getFromJson('string.Login'); ?></a></li>
                             <li><a class="btn btn-round btn-default" href="<?php echo e(route('hotel.new')); ?>">Register a Hotel</a></li>
                 <?php endif; ?>
                </ul>

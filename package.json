@@ -19,6 +19,9 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
+        "color.css": "^0.0.0-beta.0",
+        "laravel-vue-pagination": "^1.2.0",
+        "mdb": "^0.1.0",
         "qs": "^6.5.1",
         "tooltipster": "^4.2.6",
         "vue-tooltipster": "^1.2.0"

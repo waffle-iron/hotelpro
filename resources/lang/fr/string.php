@@ -14,30 +14,25 @@ return [
     */
 
     /* theme */
-    'Slogan' => 'Administrer vos associations et vos tontines facilement.', 
-
-
-
+    'Slogan' => 'On est tous connecte dans le kwat.',
 
     /* string */
     'Welcome' => 'Bienvenue',
     'Login' => 'Se connecter',
     'Register' => 'S\'inscrire',
     'Create Account' => 'Creer un compte',
-    'Sign In' => 'Connexion',
-    'Sign Up' => 'Inscription',
+    'Sign In' => 'Connectez-Vous',
+    'Sign in' => 'Connectez-vous',
+    'Sign Up' => 'Inscrivez-Vous',
+    'Sign Up Slogan' => 'fais ton travail',
+    'Sign up' => 'Inscrivez-vous',
     'Sign up with twitter' => 'S\'inscrire avec twitter',
     'Sign up with facebook' => 'S\'inscrire avec facebook',
     'Sign up with google' => 'S\'inscrire avec google',
-    'Simulate' => 'Simuler',
-    'Simulator' => 'Simulateur',
-    'How many do yo want?' => 'Combien souhaitez  vous a terme?',
-    'How much can you save per month?' => 'Combien pouvez vous epargner par mois?',
-    'Which type of premium you wish to benefict from?' => 'Quel type de prime souhaitez vous beneficié?',
-    'Discover how to get it' => 'Decouvrir comment l\'obtenir',
+    'Remember me' => 'Se souvénir de moi',
+
     'Result' => 'Resultat',
     'Results' => 'Resultats',
-    'You have the choice' => 'Vous avez le choix',
     'Do you have a concern?' => 'Avez-vous une préoccupation?',
     'Contact us via the form below' => 'Nous contact via le formulaire ci-déssous.',
     'Send the message' => 'Envoyer le message',
@@ -48,33 +43,37 @@ return [
     'Mr' => 'M.',
     'Mrs' => 'Mme',
     'First name' => 'Nom',
+    'Name' => 'Nom',
     'Last name' => 'Prénom',
     'Email' => 'Email',
     'Telephone' => 'Téléphone',
+    'Phone' => 'Téléphone',
     'Password' => 'Mot de passe',
     'Confirm password' => 'Confirmez le mot de passe',
     'Accept terms and conditions' => 'Accepter les termes et conditions d\'utilisation',
     'Terms and conditions' => 'Termes et conditions d\'utilisation',
+    'By clicking Sign Up, you agree to our' => 'Par mon inscrption, j\'accepte les',
 
-    'Forgot Your Password?' => 'Mot de passe oublié?',
+    'Have account already?' => 'Avez vous un compte?',
+    'Forgot password?' => 'Mot de passe oublié?',
     'Need Help?' => 'Besoin d\'aide?',
     'Get Started' => 'Démarrer rapidement',
-    
+
     'Accept' => 'J\'accepte',
     'reject' => 'Je décline',
     'Yes' => 'Oui',
     'No' => 'Non',
-    
+
     'Languages' => 'Langues',
     'French' => 'Français',
     'English' => 'Anglais',
     'Chinese' => 'Chinois',
-    
+
+    'Social Account Sign Up' => 'Compte de reseau social',
     'Follow us' => 'Nous suivre',
     'Follow us on Twitter' => 'Nous suivre sur Twitter',
     'Like us on Facebook' => 'Nous suivre sur Facebook',
     'Follow us on Instagram' => 'Nous suivre sur Instagram',
-    'Remember Me' => 'Se souvénir de moi',
 
     'My Home' => 'Mon Bureau',
     'My Chat' => 'Mon Chat',
@@ -95,7 +94,7 @@ return [
     'Adhésion déja existante' => 'Adhésion déja existante',
 
 
-    // HOMe page 
+    // HOMe page
     'Administrate' => 'Administrer',
 
 

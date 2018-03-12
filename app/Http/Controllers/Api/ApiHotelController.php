@@ -21,7 +21,7 @@ class ApiHotelController extends WebController
      */
     public function index(Request $request)
     {
-        $hotels = Hotel::all();
+        $hotels = HotelLogic::getPaginate($request);
         
         if($request->ajax()){
             return response()->json(compact('hotels'),200) ;

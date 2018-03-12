@@ -19,13 +19,14 @@
     <link href="/assets/css/core.css" rel="stylesheet" />
     <link href="/assets/css/bootstrap-extend.css" rel="stylesheet" />
     <link href="/assets/css/spinkit.css" rel="stylesheet" />
+    <link href="/assets/css/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
     <link href="/plugins/toastr/toastr.min.css" rel="stylesheet" />
     <link href="/plugins/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
 
     
     <link rel="stylesheet" href="/assets/fonts/web-icons/web-icons.min.css">
     <link rel="stylesheet" href="/assets/fonts/brand-icons/brand-icons.min.css">
-    <link rel="stylesheet" href="/assets/fonts/flag-icon/flag-icon.min.css">
+    <link rel="stylesheet" href="/assets/fonts/flag-icon/flag-icon.css">
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>
   <!-- Inline -->
     <!--     Font Awesome     -->
@@ -52,6 +53,7 @@
     <script src="/assets/js/jquery.slimscroll.js"></script>
     <script src="/assets/js/jquery-ui-1.10.4.custom.min.js"></script>
     <script src="/assets/js/waves.js"></script>
+    <script src="/assets/js/jquery.bootstrap-touchspin.min.js"></script>
     <script src="/plugins/toastr/toastr.min.js"></script>
     <script src="/plugins/sweetalert2/sweetalert2.min.js"></script>
 

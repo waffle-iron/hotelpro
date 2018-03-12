@@ -26,28 +26,28 @@ class HotelLogic
         /* debut du filtrage */
         $query = Hotel::query();
 
-        if ($q) {
-            $query = $query->where(function ($query) {
-                        $query->where('nom', 'like', "%$q%")->orWhere('tel', 'like', "%$q%")->orWhere('email', 'like', "%$q%")
+        if ($q && !empty($q)) {
+            $query = $query->where(function ($query) use ($q) {
+                        $query->where('nom', 'like', "%$q%")->orWhere('tel', 'like', "%$q%")->orWhere('email', 'like', "%$q%");
                     });
         }
 
-        if ($prix_max) {
+        if ($prix_max && !empty($prix_max)) {
             $query = $query->where("prix_max", '<=', $prix_max);
         }
-        if ($prix_min) {
+        if ($prix_min && !empty($prix_min)) {
             $query = $query->where("prix_min", '>=', $prix_min);
         }
 
-        if ($place) {
+        if ($place && !empty($place)) {
              $query = $query->where(function ($query) {
-                        $query->where('place', 'like', "%$place%")->orWhere('ville', 'like', "%$place%")->orWhere('pays', 'like', "%$place%")
+                        $query->where('place', 'like', "%$place%")->orWhere('ville', 'like', "%$place%")->orWhere('pays', 'like', "%$place%");
                     });
         }
 
         /* resultat de la recherche et pagination */
 
-        return Hotel::paginate();
+        return $query->paginate();
     }
 
     /**

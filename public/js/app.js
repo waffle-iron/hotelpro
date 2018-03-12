@@ -29502,7 +29502,7 @@ function updateLink (link, options, obj) {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(19);
-module.exports = __webpack_require__(854);
+module.exports = __webpack_require__(855);
 
 
 /***/ }),
@@ -29531,106 +29531,135 @@ window.Vue = __webpack_require__(45);
  */
 
 
-Vue.component('example-component', __webpack_require__(851));
+Vue.component('pagination', __webpack_require__(851));
+Vue.component('example-component', __webpack_require__(852));
 
 //const app = new Vue({
 //    el: '#app'
 //});
 
-if ($('#app-search').length) {
+$(document).ready(function () {
 
-	var appSearch = new Vue({
-		el: '#app-search',
+	//
+	if ($('#appSearch').length) {
 
-		components: {
-			VueTooltipster: __WEBPACK_IMPORTED_MODULE_0__components_vue_tooltipster_vue___default.a
-		},
+		var appSearch = new Vue({
+			el: '#appSearch',
 
-		data: {
-			text: "",
-			searchInProgress: false,
-			showIfResults: false,
-			results: [],
-			filtre: {
-				q: "Nothings",
-				prixMin: 0,
-				prixMax: 0,
-				nbreEtoile: "",
-				place: ""
+			components: {
+				VueTooltipster: __WEBPACK_IMPORTED_MODULE_0__components_vue_tooltipster_vue___default.a
 			},
-			_: _,
-			$: $
-		},
 
-		mounted: function mounted() {
-			var _this = this;
-
-			this.searchInProgress = true;
-			axios.get('/api/hotels').then(function (response) {
-				_this.results = response.data.hotels;
-				console.log(_this.results.length);
-				_this.searchInProgress = false;
-				_this.showIfResults = true;
-			}, function (error) {
-				_this.searchInProgress = false;
-				_this.showIfResults = false;
-			});
-		},
-
-		watch: {
-			showIfResults: function showIfResults() {
-				if (this.results.length > 0) {
-					this.showIfResults = true;
-				} else {
-					this.showIfResults = false;
-				}
+			data: function data() {
+				return {
+					text: "",
+					searchInProgress: false,
+					showIfResults: false,
+					results: {},
+					featureds: { data: [] },
+					filtre: {
+						q: "Nothings",
+						prixMin: 0,
+						prixMax: 0,
+						nbreEtoile: "",
+						place: ""
+					},
+					lo: _
+				};
 			},
-			'filtre.prixMin': function filtrePrixMin() {
-				if (parseInt(this.filtre.prixMin) > parseInt(this.filtre.prixMax)) {
-					this.filtre.prixMax = this.filtre.prixMin;
-					alert();
+			created: function created() {},
+
+
+			mounted: function mounted() {
+				var _this = this;
+
+				$(this.$refs.nbreEtoile).TouchSpin({
+					min: 1,
+					max: 9,
+					step: 1,
+					decimals: 0,
+					boostat: 5,
+					maxboostedstep: 10,
+					buttondown_class: 'btn btn-white',
+					buttonup_class: 'btn btn-white'
+				});
+
+				this.searchInProgress = true;
+				axios.get('/api/hotels').then(function (response) {
+					_this.featureds = response.data.hotels;
+					console.log(_this.featureds);
+					_this.searchInProgress = false;
+					_this.showIfResults = true;
+				}, function (error) {
+					_this.searchInProgress = false;
+					_this.showIfResults = false;
+				});
+			},
+
+			watch: {},
+
+			methods: {
+
+				clear: function clear() {
+					this.text = "";
+				},
+
+				scrollUp: function scrollUp() {
+					// body...	
+				},
+
+				debounce: function debounce(func, wait, immediate) {
+					var timeout;
+					return function () {
+						var context = this,
+						    args = arguments;
+						clearTimeout(timeout);
+						timeout = setTimeout(function () {
+							timeout = null;
+							if (!immediate) func.apply(context, args);
+						}, wait);
+						if (immediate && !timeout) func.apply(context, args);
+					};
+				},
+
+
+				search: function search() {
+					var vm = this;
+					var search = function search(vm) {
+						if (_.size(vm.text)) {
+
+							vm.filtre.q = vm.text;
+							vm.searchInProgress = true;
+							axios.get('/api/hotels', { params: vm.filtre }).then(function (response) {
+								vm.results = response.data.hotels;
+								console.log(vm.results);
+								vm.searchInProgress = false;
+								vm.showIfResults = true;
+							}, function (error) {
+								vm.searchInProgress = false;
+								vm.showIfResults = false;
+							});
+						} else {
+							vm.searchInProgress = false;
+							vm.showIfResults = false;
+						}
+					};
+					this.lo.debounce(search(vm), 1500);
+				},
+
+				showOption: function showOption() {
+					// body...
+				},
+
+				showTooltipster: function showTooltipster() {
+					// body...
 				}
 			}
-		},
+		});
 
-		methods: {
-
-			clear: function clear() {
-				this.text = "";
-			},
-
-			scrollUp: function scrollUp() {
-				// body...	
-			},
-
-			search: _.debounce(function () {
-				var vm = this;
-				if (_.size(vm.text)) {
-					vm.filtre.q = vm.text;
-					vm.searchInProgress = true;
-					axios.get('/api/hotel', vm.filtre).then(function (response) {
-						console.log(response.data);
-						vm.searchInProgress = false;
-					}, function (error) {
-						vm.searchInProgress = false;
-					});
-				} else {
-					vm.searchInProgress = false;
-				}
-			}, 1000),
-
-			showOption: function showOption() {
-				// body...
-			},
-
-			showTooltipster: function showTooltipster() {
-				// body...
-			}
-		}
-	});
-
-	//console.log(app, appSearch)
-}
+		//console.log(app, appSearch)
+	}
+});
 
 /***/ }),
 /* 20 */
@@ -56394,14 +56423,114 @@ if (false) {
 
 /***/ }),
 /* 851 */
+/***/ (function(module, exports) {
+
+module.exports = {
+	props: {
+		data: {
+			type: Object,
+			default: function() {
+				return {
+					current_page: 1,
+					data: [],
+					from: 1,
+					last_page: 1,
+					next_page_url: null,
+					per_page: 10,
+					prev_page_url: null,
+					to: 1,
+					total: 0,
+				}
+			}
+		},
+		limit: {
+			type: Number,
+			default: 0
+		}
+	},
+
+	template: '<ul class="pagination" v-if="data.total > data.per_page">\
+		<li class="page-item pagination-prev-nav" v-if="data.prev_page_url">\
+			<a class="page-link" href="#" aria-label="Previous" @click.prevent="selectPage(--data.current_page)">\
+				<slot name="prev-nav">\
+					<span aria-hidden="true">&laquo;</span>\
+					<span class="sr-only">Previous</span>\
+				</slot>\
+			</a>\
+		</li>\
+		<li class="page-item pagination-page-nav" v-for="n in getPages()" :class="{ \'active\': n == data.current_page }">\
+			<a class="page-link" href="#" @click.prevent="selectPage(n)">{{ n }}</a>\
+		</li>\
+		<li class="page-item pagination-next-nav" v-if="data.next_page_url">\
+			<a class="page-link" href="#" aria-label="Next" @click.prevent="selectPage(++data.current_page)">\
+				<slot name="next-nav">\
+					<span aria-hidden="true">&raquo;</span>\
+					<span class="sr-only">Next</span>\
+				</slot>\
+			</a>\
+		</li>\
+	</ul>',
+
+	methods: {
+		selectPage: function(page) {
+			if (page === '...') {
+				return;
+			}
+
+			this.$emit('pagination-change-page', page);
+		},
+		getPages: function() {
+			if (this.limit === -1) {
+				return 0;
+			}
+
+			if (this.limit === 0) {
+				return this.data.last_page;
+			}
+
+			var current = this.data.current_page,
+				last = this.data.last_page,
+				delta = this.limit,
+				left = current - delta,
+				right = current + delta + 1,
+				range = [],
+				pages = [],
+				l;
+
+			for (var i = 1; i <= last; i++) {
+				if (i == 1 || i == last || (i >= left && i < right)) {
+					range.push(i);
+				}
+			}
+
+			range.forEach(function (i) {
+				if (l) {
+					if (i - l === 2) {
+						pages.push(l + 1);
+					} else if (i - l !== 1) {
+						pages.push('...');
+					}
+				}
+				pages.push(i);
+				l = i;
+			});
+
+			return pages;
+		}
+	}
+};
+
+
+/***/ }),
+/* 852 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(6)
 /* script */
-var __vue_script__ = __webpack_require__(852)
+var __vue_script__ = __webpack_require__(853)
 /* template */
-var __vue_template__ = __webpack_require__(853)
+var __vue_template__ = __webpack_require__(854)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -56440,7 +56569,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 852 */
+/* 853 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -56469,7 +56598,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 853 */
+/* 854 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -56512,7 +56641,7 @@ if (false) {
 }
 
 /***/ }),
-/* 854 */
+/* 855 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

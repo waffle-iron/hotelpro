@@ -19,24 +19,22 @@ class TraductorMiddleware
     public function handle($request, Closure $next)
     {
         $locale = $request->input('lang');
-        $sessionLocale = Session::get('locale', Config::get('app.locale'));
         
+        $sessionLocale = Session::get('locale', Config::get('app.locale'));
+
         if ($locale) {
 
             if ($locale != $sessionLocale) {
                 session(compact('locale'));
                 setcookie('locale', $locale);
-                App::setLocale($locale);
             }
 
-        }  else {
+        }  
 
-            $locale = $sessionLocale;
-            session(compact('locale'));
-            setcookie('locale', $locale);
-            App::setLocale($locale);
+        $sessionLocale = Session::get('locale', Config::get('app.locale'));
 
-        }
+        App::setLocale($sessionLocale);
+
         
         return $next($request);
     }
