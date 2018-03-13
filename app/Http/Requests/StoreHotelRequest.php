@@ -26,7 +26,12 @@ class StoreHotelRequest extends FormRequest
         return [
             'nom' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'tel' => 'required|string|min:9',
+            'telephone' => 'required|string|min:9',
+            'nomAdmin' => 'required|string|max:255',
+            'emailAdmin' => 'required|string|email|max:255|unique:users',
+            'telephoneAdmin' => 'required|string|min:9',
+            'cni' => 'required|string|min:9',
+            'passport' => 'string|min:9',
         ];
     }
 }

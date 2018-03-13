@@ -13,10 +13,13 @@
 
 
 Auth::routes();
+//routes home page
 Route::get('/', 'IndexController@index')->name('index');
 Route::get('/login', 'IndexController@login')->name('login');
 Route::get('/register', 'IndexController@register')->name('register');
 Route::get('/home', 'HomeController@index')->name('home');
 
+//routes for hotel page
 Route::get('/hotel/new', HotelController::class .'@create')->name('hotel.new');
-Route::resource('hotel', HotelController::class);
+Route::post('/hotel/store', 'HotelControllerNoRessources@store')->name('store');
+Route::get('/hotel/index',HotelController::class.'@getHotelAfterSearch')->name('hotel.index');

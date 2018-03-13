@@ -5,6 +5,7 @@ namespace App\Http\Logic;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Hotel;
+use App\User;
 use App;
 use DB;
 
@@ -34,11 +35,12 @@ class HotelLogic
 
         try {
 
-            $data = $request->input();
-            $hotel = Hotel::create($data);
+
+            $data = $request->only('nomAdmin', 'prenomAdmin');
+            dd($data);
 
             if($request->ajax()){
-                return response()->json(['status' => 1, 'msg' => 'Hotel <b>'. $data['nom'] .'</b> a ete cree avec succes'], 200);
+                return response()->json(['status' => 1, 'msg' => 'Hotel <b>'. $hotel->nom .'</b> a ete cree avec succes'], 200);
             }else{
                 return back()->withInput();
             }

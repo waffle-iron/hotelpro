@@ -17,7 +17,8 @@
 
 var searchVisible = 0;
 var transparent = true;
-var submitPageIndex = 2;
+var recapPageIndex = 2;
+var submitPageIndex = 3;
 
 $(document).ready(function(){
 
@@ -129,6 +130,9 @@ $(document).ready(function(){
                     'visibility':'hidden',
                     'position':'absolute'
                 });
+                if (parseInt(index) == recapPageIndex) {
+                    onRecapNeeded();
+                }
 
 
                 if (parseInt(index) == submitPageIndex) {
@@ -152,6 +156,9 @@ $(document).ready(function(){
     // Prepare the preview for profile picture
     $("#wizard-picture").change(function(){
         readURL(this);
+    });
+    $("#wizard-picture1").change(function(){
+        readURL1(this);
     });
 
     $('[data-toggle="wizard-radio"]').click(function(){
@@ -186,6 +193,16 @@ function readURL(input) {
 
         reader.onload = function (e) {
             $('#wizardPicturePreview').attr('src', e.target.result).fadeIn('slow');
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+function readURL1(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#wizardPicturePreview1').attr('src', e.target.result).fadeIn('slow');
         }
         reader.readAsDataURL(input.files[0]);
     }
@@ -258,4 +275,41 @@ function onSubmit() {
 
            }).then( () => { $form.find(':input').prop('disabled', false) })
     }, 1000));
+}
+
+
+function onRecapNeeded() {
+
+    var $form = $('.wizard-card form');
+    var $inputs = $form.find(":input:not(.btn)");
+    $inputs.each(function () {
+        $input = $(this);
+
+        let key = $input.data("key") === undefined ? ($input.attr("placeholder") ===  undefined ? $input.attr("placeholder") : $input.attr("name") )
+                                                    : $input.data("key") ;
+
+        let val = $input.val();
+
+        var nameAttr = $input.attr('name');
+        let isAffichable= key !== undefined;
+
+        if (isAffichable) {
+            if (nameAttr !== "description") {
+
+                var tr = '<tr><td class="key"><b class="key '+nameAttr+'">'+ key +'</b></td><td class="val">'+val+'</td></tr>';
+
+                //console.log(tr);
+                var isForPerso = $input.parents('#about').length;
+
+                if (isForPerso ) {
+                    $('#recap').find('tbody td.perso').append(tr);
+                }else {
+                    $('#recap').find('tbody td.hotel').append(tr);
+                }
+            }
+
+        }
+
+    });
+
 }

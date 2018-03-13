@@ -1,9 +1,3 @@
-/**
- * Theme: Adminox Admin Template
- * Author: Coderthemes
- * Module/App: Main Js
- */
-
 
 (function ($) {
 

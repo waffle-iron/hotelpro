@@ -6,6 +6,7 @@ use App\User;
 use App\Hotel;
 use App\Http\Logic\HotelLogic;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\StoreHotelRequest;
 
@@ -16,11 +17,11 @@ class HotelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $hotels = Hotel::all();
+        $hotels = Hotel::whereId(1);
         if($request->ajax()){
-            return response(compact('hotels'))->json($hotels,200) ;
+            return response()->json(compact('hotels'),200) ;
         }else{
             return back()->withInput();
         }
@@ -45,7 +46,7 @@ class HotelController extends Controller
      */
     public function store(StoreHotelRequest $request)
     {
-
+        dd($request->only('nomAdmin'));
         return HotelLogic::store($request);
     }
 
@@ -92,5 +93,8 @@ class HotelController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function getHotelAfterSearch(){
+        return view('hotels.index');
     }
 }

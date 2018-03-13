@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('email');
             $table->string('tel')->nullable();
             $table->string('password');
+            $table->string('passport')->nullable();
             $table->string('cni')->nullable();
             $table->string('avatar')->default('avatar.svg');
             $table->text('permissions')->nullable();
