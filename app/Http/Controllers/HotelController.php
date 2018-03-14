@@ -2,13 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use App\Hotel;
 use App\Http\Logic\HotelLogic;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Validator;
-use App\Http\Requests\StoreHotelRequest;
 
 class HotelController extends Controller
 {
@@ -19,7 +15,7 @@ class HotelController extends Controller
      */
     public function index(Request $request)
     {
-        $hotels = Hotel::whereId(1);
+        $hotels = Hotel::all();
         if($request->ajax()){
             return response()->json(compact('hotels'),200) ;
         }else{
