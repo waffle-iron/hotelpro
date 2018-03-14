@@ -44,9 +44,8 @@ class HotelController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreHotelRequest $request)
+    public function store(Request $request)
     {
-        dd($request->only('nomAdmin'));
         return HotelLogic::store($request);
     }
 
@@ -96,5 +95,10 @@ class HotelController extends Controller
     }
     public function getHotelAfterSearch(){
         return view('hotels.index');
+    }
+
+    public function login(){
+
+        return view('hotels.login');
     }
 }

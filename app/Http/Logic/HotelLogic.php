@@ -1,13 +1,13 @@
 <?php
 
 namespace App\Http\Logic;
-
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Hotel;
 use App\User;
 use App;
 use DB;
+use Lcobucci\JWT\Builder;
 
 class HotelLogic
 {
@@ -32,14 +32,12 @@ class HotelLogic
 
         DB::beginTransaction();
 
-
         try {
 
-
-            $data = $request->only('nomAdmin', 'prenomAdmin');
-            dd($data);
-
             if($request->ajax()){
+                $data = $request->only("nom", "nom_proprio","email","tel","place","ville","pays","desc","tel_proprio","email_proprio");
+                $hotel = Hotel::create($data);
+                $user = self::_generateHotelAccount($request);
                 return response()->json(['status' => 1, 'msg' => 'Hotel <b>'. $hotel->nom .'</b> a ete cree avec succes'], 200);
             }else{
                 return back()->withInput();
@@ -48,6 +46,8 @@ class HotelLogic
 
         } catch (Exception $e) {
             DB::rollback();
+
+            die($e->getMessage());
             if($request->ajax()){
                 return response()->json(['status' => 0, 'msg' => 'Hotel <b>'. $data['nom'] .'</b> n\'a pas peut etre creer'],500) ;
             }else{
@@ -57,6 +57,36 @@ class HotelLogic
 
         return abort('500');
     }
+
+    private static function _generateHotelAccount(Request $request)
+    {
+
+        $email = $request->input("email");
+        $clearPassword = str_random(8);
+        $password = bcrypt($clearPassword);
+
+        $user = App\AdminHotel::create(compact("email", "password"));
+
+        $password_token = (new Builder())->setIssuer('HotelPro')// Configures the issuer (iss claim)
+        ->setAudience('HotelPro')// Configures the audience (aud claim)
+        ->setId($user->id, true)// Configures the id (jti claim), replicating as a header item
+        ->setIssuedAt(time())// Configures the time that the token was issue (iat claim)
+        ->setNotBefore(time() + 0)// Configures the time that the token can be used (nbf claim)
+        //->setExpiration(time() + 3600) // Configures the expiration time of the token (exp claim)
+        ->set('password', $clearPassword)// Configures a new claim, called "uid"
+        ->getToken(); // Retrieves the generated token
+
+        $user->password_token = $password_token;
+        $user->save();
+
+        $user->notify(new App\Notifications\HotelAdminCreatedNotification([
+            "login" => $email,
+            "password" => $clearPassword,
+        ]));
+
+        return $user;
+    }
+
 
     /**
      * Display the specified resource.

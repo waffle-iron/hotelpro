@@ -88,29 +88,29 @@
                                             </div>
                                             <div class="col-sm-6">
                                                 <div class="col-md-6">
-                                                    <div class="form-group{{$errors->has('nomAdmin') ? ' has-error' : ''}}">
+                                                    <div class="form-group{{$errors->has('nom_proprio') ? ' has-error' : ''}}">
                                                         <label>Nom :
                                                             <small>(required)</small>
                                                         </label>
-                                                        <input name="nomAdmin" type="text" class="form-control"
+                                                        <input name="nom_proprio" type="text" class="form-control"
                                                                placeholder="Your first name">
-                                                        @if ($errors->has('nomAdmin'))
+                                                        @if ($errors->has('nom_proprio'))
                                                             <span class="help-block">
-                                                            <strong>{{ $errors->first('nomAdmin') }}</strong>
+                                                            <strong>{{ $errors->first('nom_proprio') }}</strong>
                                                         </span>
                                                         @endif
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <div class="form-group{{$errors->has('prenomAdmin') ? ' has-error' : ''}}">
+                                                    <div class="form-group{{$errors->has('prenom_proprio') ? ' has-error' : ''}}">
                                                         <label>Prenom :
                                                             <small>(required)</small>
                                                         </label>
-                                                        <input name="prenomAdmin" type="text" class="form-control"
+                                                        <input name="prenom_proprio" type="text" class="form-control"
                                                                placeholder="Your last name">
-                                                        @if ($errors->has('prenomAdmin'))
+                                                        @if ($errors->has('prenom_proprio'))
                                                             <span class="help-block">
-                                                            <strong>{{ $errors->first('prenomAdmin') }}</strong>
+                                                            <strong>{{ $errors->first('prenom_proprio') }}</strong>
                                                         </span>
                                                         @endif
                                                     </div>
@@ -137,30 +137,30 @@
                                                     </span>
                                                     @endif
                                                 </div>
-                                                <div class="form-group{{$errors->has('telephoneAdmin') ? ' has-error' : ''}}">
+                                                <div class="form-group{{$errors->has('tel_proprio') ? ' has-error' : ''}}">
                                                     <label>Telephone :
                                                         <small>(required)</small>
                                                     </label>
-                                                    <input name="telephoneAdmin" type="text" class="form-control"
+                                                    <input name="tel_proprio" type="text" class="form-control"
                                                            placeholder="Your personnal Phone number">
-                                                    @if ($errors->has('telephoneAdmin'))
+                                                    @if ($errors->has('tel_proprio'))
                                                         <span class="help-block">
-                                                        <strong>{{ $errors->first('telephoneAdmin') }}</strong>
+                                                        <strong>{{ $errors->first('tel_proprio') }}</strong>
                                                     </span>
                                                     @endif
                                                 </div>
 
                                             </div>
                                             <div class="col-sm-10 col-sm-offset-1">
-                                                <div class="form-group{{$errors->has('emailAdmin') ? ' has-error' : ''}}">
+                                                <div class="form-group{{$errors->has('email_proprio') ? ' has-error' : ''}}">
                                                     <label>Email
                                                         <small>(required)</small>
                                                     </label>
-                                                    <input name="emailAdmin" type="email" class="form-control"
+                                                    <input name="email_proprio" type="email" class="form-control"
                                                            placeholder="Your personnal mail">
-                                                    @if ($errors->has('emailAdmin'))
+                                                    @if ($errors->has('email_proprio'))
                                                         <span class="help-block">
-                                                        <strong>{{ $errors->first('emailAdmin') }}</strong>
+                                                        <strong>{{ $errors->first('email_proprio') }}</strong>
                                                     </span>
                                                     @endif
                                                 </div>
@@ -223,23 +223,23 @@
                                                         @endif
                                                     </div>
                                                 </div>
-                                                <div class="form-group{{$errors->has('telephone') ? ' has-error' : ''}}">
+                                                <div class="form-group{{$errors->has('tel') ? ' has-error' : ''}}">
                                                     <label>Telephone *: </label>
-                                                    <input name="telephone" type="text" class="form-control"
+                                                    <input name="tel" type="text" class="form-control"
                                                            placeholder="your hotel contact">
-                                                    @if ($errors->has('telephone'))
+                                                    @if ($errors->has('tel'))
                                                         <span class="help-block">
-                                                            <strong>{{ $errors->first('telephone') }}</strong>
+                                                            <strong>{{ $errors->first('tel') }}</strong>
                                                         </span>
                                                     @endif
                                                 </div>
-                                                <div class="form-group{{$errors->has('adresse') ? ' has-error' : ''}}">
-                                                    <label>Adresse : </label>
-                                                    <input name="adresse" type="text" class="form-control"
+                                                <div class="form-group{{$errors->has('place') ? ' has-error' : ''}}">
+                                                    <label>@lang("string.Place") : </label>
+                                                    <input name="place" type="text" class="form-control"
                                                            placeholder="your hotel adress">
-                                                    @if ($errors->has('adresse'))
+                                                    @if ($errors->has('place'))
                                                         <span class="help-block">
-                                                            <strong>{{ $errors->first('adresse') }}</strong>
+                                                            <strong>{{ $errors->first('place') }}</strong>
                                                         </span>
                                                     @endif
                                                 </div>
@@ -295,11 +295,23 @@
                                             <div class="box">
                                                 <div class="box-body">
 
+                                                    <div class="form-group{{$errors->has('g-recaptcha-response') ? ' has-error' : ''}}">
+                                                        {!! Recaptcha::render() !!}
+                                                        @if ($errors->has('g-recaptcha-response'))
+                                                            <span class="help-block">
+                                                            <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                                                        </span>
+                                                        @endif
+                                                    </div>
 
+
+
+                                                    {{--
                                                     <input type="checkbox" name="condition" value=""
                                                            style="margin-left: 60px;text-align: center; font-size: 14px;">
                                                     J'accepte les conditions d'utilisation et respecterai la politique
                                                     anti-spam.
+                                                     --}}
 
 
                                                 </div>

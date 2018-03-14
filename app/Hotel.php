@@ -16,6 +16,6 @@ class Hotel extends Model
      * @var array
      */
     protected $fillable = [
-        'nom', 'email', 'logo', 'email', 'ville', 'place_ville', 'place', 'pays', 'tel' , 'nom_proprio', 'tel_proprio','email_proprio',
+        'nom', 'email', 'email_proprio', 'ville', 'place', 'pays', 'tel' , 'nom_proprio', 'tel_proprio','desc'
     ];
 }

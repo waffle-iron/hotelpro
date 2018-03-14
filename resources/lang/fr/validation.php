@@ -87,6 +87,7 @@ return [
     'unique'               => 'The :attribute has already been taken.',
     'uploaded'             => 'The :attribute failed to upload.',
     'url'                  => 'The :attribute format is invalid.',
+    'recaptcha' => 'Le champ :attribute n\'est pas correct. .',
 
     /*
     |--------------------------------------------------------------------------

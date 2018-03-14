@@ -17,9 +17,8 @@ class CreateRolesTable extends Migration
             $table->unsignedInteger('id');
             $table->string('libelle');
             $table->timestamps();
-
+            
             //$table->index('id');
-
         });
     }
 

@@ -31,7 +31,8 @@ class StoreHotelRequest extends FormRequest
             'emailAdmin' => 'required|string|email|max:255|unique:users',
             'telephoneAdmin' => 'required|string|min:9',
             'cni' => 'required|string|min:9',
-            'passport' => 'string|min:9',
+            'passport' => 'string|min:4',
+            'g-recaptcha-response' => 'required|recaptcha',
         ];
     }
 }

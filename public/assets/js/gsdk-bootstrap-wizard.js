@@ -252,7 +252,6 @@ function onSubmit() {
     var $form = $('.wizard-card form');
     let datas = $form.serialize();
 
-
     $form.submit(function (e) {
        e.preventDefault();    
        
@@ -282,6 +281,8 @@ function onRecapNeeded() {
 
     var $form = $('.wizard-card form');
     var $inputs = $form.find(":input:not(.btn)");
+    $('#recap').find('tbody td.perso').html('');
+    $('#recap').find('tbody td.hotel').html('');
     $inputs.each(function () {
         $input = $(this);
 

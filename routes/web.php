@@ -21,5 +21,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //routes for hotel page
 Route::get('/hotel/new', HotelController::class .'@create')->name('hotel.new');
-Route::post('/hotel/store', 'HotelControllerNoRessources@store')->name('store');
+Route::post('/hotel/store', HotelController::class .'@store')->name('store');
 Route::get('/hotel/index',HotelController::class.'@getHotelAfterSearch')->name('hotel.index');
+Route::get('/hotel/login',HotelController::class.'@login')->name('hotel.login');

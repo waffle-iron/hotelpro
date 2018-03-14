@@ -16,12 +16,13 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('uuid');
+            $table->string('api_token')->nullable();
             $table->string('nom');
             $table->string('prenom')->nullable();
             $table->string('email');
             $table->string('tel')->nullable();
             $table->string('password');
-            $table->string('passport')->nullable();
+            $table->string('password_token')->comment('jwt token qui contient le mot de passe en clair');
             $table->string('cni')->nullable();
             $table->string('avatar')->default('avatar.svg');
             $table->text('permissions')->nullable();

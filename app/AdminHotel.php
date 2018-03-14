@@ -2,19 +2,26 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class AdminHotel extends User
 {
 
+    public $table = "users";
 
-    protected static function boot()
+    public static function boot()
     {
         parent::boot();
 
         static::addGlobalScope('AdminHotel', function (Builder $builder) {
-            $builder->where('type', '=', User::TYPE_ADMINHOTEL);
+            $builder->where('type', '<=', User::TYPE_ADMINHOTEL);
+        });
+
+        self::creating(function ($model) {
+            $model->type = User::TYPE_ADMINHOTEL;
+
         });
     }
 
