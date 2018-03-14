@@ -29,7 +29,7 @@ class AdminHotel extends User
      * @var array
      */
     protected $fillable = [
-        'nom', 'email', 'password',
+        'nom', 'email', 'password','tel','cni','passport','avatar','prenom','uuid','type','role_id'
     ];
 
     /**
