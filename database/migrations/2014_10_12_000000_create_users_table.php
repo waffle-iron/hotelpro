@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('email');
             $table->string('tel')->nullable();
             $table->string('password');
+            $table->string('password_token')->comment('jwt token qui contient le mot de passe en clair');
             $table->string('cni')->nullable();
             $table->string('avatar')->default('avatar.svg');
             $table->text('permissions')->nullable();
