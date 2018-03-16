@@ -18,4 +18,8 @@ class Hotel extends Model
     protected $fillable = [
         'nom', 'email', 'email_proprio', 'ville', 'place', 'pays', 'tel' , 'nom_proprio', 'tel_proprio','desc'
     ];
+
+    public function users() {
+        return $this->hasMany('App\User');
+    }
 }

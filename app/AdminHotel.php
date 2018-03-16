@@ -9,6 +9,7 @@ class AdminHotel extends User
 
     public $table = "users";
 
+
     public static function boot()
     {
         parent::boot();
@@ -40,4 +41,5 @@ class AdminHotel extends User
     protected $hidden = [
         'password', 'remember_token', 'permissions'
     ];
+
 }

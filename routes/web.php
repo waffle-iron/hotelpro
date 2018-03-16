@@ -24,3 +24,6 @@ Route::get('/hotel/new', HotelController::class .'@create')->name('hotel.new');
 Route::post('/hotel/store', HotelController::class .'@store')->name('store');
 Route::get('/hotel/index',HotelController::class.'@getHotelAfterSearch')->name('hotel.index');
 Route::get('/hotel/login',HotelController::class.'@login')->name('hotel.login');
+
+//routes for admin hotels
+Route::get('/admin/admin',HotelController::class.'@index')->name('admin.dashboard');

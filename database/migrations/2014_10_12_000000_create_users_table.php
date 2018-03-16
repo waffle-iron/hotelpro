@@ -28,6 +28,12 @@ class CreateUsersTable extends Migration
             $table->text('permissions')->nullable();
             $table->tinyInteger('type');
             $table->unsignedInteger('role_id')->nullable();
+            $table->unsignedInteger('hotel_id')->nullable();
+            $table->foreign('hotel_id')
+                ->references('id')
+                ->on('hotels')
+                ->onDelete('CASCADE')
+                ->onUpdate('CASCADE');
             $table->rememberToken();
             $table->timestamps();
 

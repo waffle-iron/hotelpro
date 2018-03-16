@@ -23,6 +23,42 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <link href="//fonts.googleapis.com/css?family=Federo" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
     <!--//fonts-->
+
+    <!-- css for login page -->
+    <link rel="apple-touch-icon" href="/assets/admin/images/apple-touch-icon.png">
+    <link rel="shortcut icon" href="/assets/admin/images/favicon.ico">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/assets/admin/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/admin/css/bootstrap-extend.min.css">
+    <link rel="stylesheet" href="/assets/admin/css/site.min.css">
+
+    <!-- Plugins -->
+    <link rel="stylesheet" href="/assets/admin/vendor/animsition/animsition.css">
+    <link rel="stylesheet" href="/assets/admin/vendor/asscrollable/asScrollable.css">
+    <link rel="stylesheet" href="/assets/admin/vendor/switchery/switchery.css">
+    <link rel="stylesheet" href="/assets/admin/vendor/intro-js/introjs.css">
+    <link rel="stylesheet" href="/assets/admin/vendor/slidepanel/slidePanel.css">
+    <link rel="stylesheet" href="/assets/admin/vendor/flag-icon-css/flag-icon.css">
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="/assets/admin/fonts/web-icons/web-icons.min.css">
+    <link rel="stylesheet" href="/assets/admin/fonts/brand-icons/brand-icons.min.css">
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>
+    <!-- Inline -->
+    <link rel="stylesheet" href="/assets/admin/examples/css/pages/login-v3.css">
+
+    <!--[if lt IE 9]>
+    <script src="/assets/admin/vendor/html5shiv/html5shiv.min.js"></script>
+    <![endif]-->
+
+    <!--[if lt IE 10]>
+    <script src="/assets/admin/vendor/media-match/media.match.min.js"></script>
+    <script src="/assets/admin/vendor/respond/respond.min.js"></script>
+    <![endif]-->
+
+
+    <!-- css login page -->
     <style>
         .w3layouts-banner-top,.w3layouts-banner-top1,.w3layouts-banner-top2{
             min-height:100vh;
@@ -51,6 +87,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             font-size: 20px;
 
         }
+        body{
+            padding: 0;
+        }
     </style>
 </head>
 <body>
@@ -64,52 +103,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <li>
                     <div class="w3layouts-banner-top">
 
-                        <div class="container">
-                            <div class="agileits-banner-info">
-                                <h4>Star Hotel</h4>
-                                <h3>We know what you love</h3>
-                                <p>Welcome to our hotels</p>
-                                <div class="agileits_w3layouts_more menu__item">
-                                    <a href="#" class="menu__link" data-toggle="modal" data-target="#myModal">Learn More</a>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </li>
                 <li>
                     <div class="w3layouts-banner-top w3layouts-banner-top1">
-                        <div class="container">
-                            <div class="agileits-banner-info">
-                                <h4>Star Hotel</h4>
-                                <h3>Stay with friends & families</h3>
-                                <p>Come & enjoy precious moment with us</p>
-                                <div class="agileits_w3layouts_more menu__item">
-                                    <a href="#" class="menu__link" data-toggle="modal" data-target="#myModal">Learn More</a>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </li>
                 <li>
                     <div class="w3layouts-banner-top w3layouts-banner-top2">
-                        <div class="container">
-                            <div class="agileits-banner-info">
-                                <h4>Star Hotel</h4>
-                                <h3>want luxurious vacation?</h3>
-                                <p>Get accommodation today</p>
-                                <div class="agileits_w3layouts_more menu__item">
-                                    <a href="#" class="menu__link" data-toggle="modal" data-target="#myModal">Learn More</a>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </li>
             </ul>
         </div>
-        <div class="clearfix"> </div>
+
         <!--banner Slider starts Here-->
     </div>
-    <div class="col-md-10 col-md-offset-1 book-form">
+    <div  class="col-md-10 col-offset-1 book-form" >
         <form action="#" class="center-block" method="post" style="width: 900px;">
             <div class="fields-w3ls form-date-w3-agileits">
                 <p>@lang('string.Email')</p>
@@ -119,11 +131,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <p>@lang('string.Password')</p>
                 <input name="password" type="text" placeholder="@lang('string.Password')" onfocus="this.value = '';" required="">
             </div>
-        
+
             <input type="submit" value="@lang('string.Login')">
 
         </form>
+
     </div>
+
     {{--
     <div class="thim-click-to-bottom">
         <a href="#about" class="scroll">
@@ -131,6 +145,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </a>
     </div>
      --}}
+    <div class="clearfix"> </div>
 </div>
 <!-- //banner -->
 <!--//Header-->

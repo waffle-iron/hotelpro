@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller as WebController;
+use App\Hotel;
 
 class ApiHotelController extends WebController
 {
@@ -14,7 +15,8 @@ class ApiHotelController extends WebController
      */
     public function index()
     {
-        //
+        $hotel = Hotel::all();
+        return response()->json($hotel, 200);
     }
 
     /**
@@ -35,7 +37,8 @@ class ApiHotelController extends WebController
      */
     public function store(Request $request)
     {
-        //
+        $hotel = Hotel::create($request->all());
+        return response()->json($hotel, 201);
     }
 
     /**
@@ -46,7 +49,8 @@ class ApiHotelController extends WebController
      */
     public function show($id)
     {
-        //
+        $hotel = Hotel::WhereI($id);
+        return response()->json($hotel, 200);
     }
 
     /**

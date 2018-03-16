@@ -11,6 +11,8 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    private $_permissions;
+
     const TYPE_ADMIN_SUPER = 1;
     const TYPE_ADMINHOTEL = 19;
     const TYPE_USER = 29;
@@ -30,7 +32,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nom', 'email', 'password','tel','cni','passport','avatar','prenom','uuid','type','role_id'
+        'nom', 'email', 'password','tel','cni','passport','avatar','prenom','uuid','type','role_id','hotel_id'
     ];
 
     /**
@@ -50,5 +52,16 @@ class User extends Authenticatable
 
         //echo $token->getHeader('jti'); // will print "4f1g23a12aa"
         return $token->getClaim('password');
+    }
+
+    public function getPermissions()
+    {
+        return $this->_permissions;
+    }
+    public function hotels() {
+        return $this->belongsTo('App\Hotel', 'hotel_id');
+    }
+    public function roles() {
+        return $this->belongsTo('App\Role', 'role_id');
     }
 }

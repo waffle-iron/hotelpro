@@ -13,14 +13,11 @@ class HotelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $hotels = Hotel::all();
-        if($request->ajax()){
-            return response()->json(compact('hotels'),200) ;
-        }else{
-            return back()->withInput();
-        }
+
+        return view('admin.dashboard');
+
     }
 
     /**
@@ -53,7 +50,8 @@ class HotelController extends Controller
      */
     public function show($id)
     {
-        //
+        $hotel = Hotel::find($id);
+        return view('hotels.index',compact("hotel", $hotel));
     }
 
     /**
@@ -64,7 +62,8 @@ class HotelController extends Controller
      */
     public function edit($id)
     {
-        //
+        $hotel = Hotel::find($id);
+
     }
 
     /**
@@ -76,7 +75,15 @@ class HotelController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if($request->ajax()){
+            $hotel = Hotel::find($id);
+            return response()->json(compact('hotel'),200) ;
+        }else{
+            return back()->withInput();
+        }
+
+
+
     }
 
     /**
@@ -88,9 +95,6 @@ class HotelController extends Controller
     public function destroy($id)
     {
         //
-    }
-    public function getHotelAfterSearch(){
-        return view('hotels.index');
     }
 
     public function login(){
